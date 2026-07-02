@@ -1,32 +1,115 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
 # Binaries for programs and plugins
+*.mp4
+*.mp3
+*.mov
+*.txt
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
+*.bak
+*.zip
+*.7z
+*.rar
+*.pdf
+*.bin
+*.apk
 
-# Test binary, built with `go test -c`
-*.test
-
-# Code coverage profiles and other test artifacts
+# 服务端Go编译产物
+garpress
+gar-*-*
+gar-sqlite-*
+*.exe
 *.out
-coverage.*
-*.coverprofile
-profile.cov
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# 移动端Flutter编译产物
+build/
+*.ios/
+*.android/
+*.linux/
+*.macos/
+*.windows/
+*.symbols
+*.map.json
 
-# Go workspace file
-go.work
-go.work.sum
+# 网页端编译产物
+content/themes/gar/output.css
+content/themes/gar/dist/
+content/themes/gar/node_modules/
+content/themes/garplus/output.css
+content/themes/garplus/dist/
+content/themes/garplus/node_modules/
+*.css.map
+*.js.map
 
-# env file
-.env
+# 忽略指定名字文件
+CODE_OF_CONDUCT.*
+EasyPlayer*.*
+lines.sh
+demo.html
+easypalyer.html
+.hintrc
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# Test binary, build with `go test -c`
+*.test
+*.prof
+*.cover
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# 忽略日志文件
+*.log
+logs/
+
+# 忽略临时文件
+*.tmp
+*.apk.sha1
+*.swp
+*.swo
+
+# 忽略IDE生成的文件
+garplayer
+.vscode/
+.idea/
+.trae/
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+
+# 忽略数据和缓存目录
+backup/
+uploads/
+docs/
+bak/
+tmp/
+temp/
+.cache/
+
+# 忽略依赖目录
+vendor/
+node_modules/
+
+# 忽略操作系统文件
+.DS_Store
+Thumbs.db
+
+# 忽略数据库文件
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+
+# 忽略会话文件
+content/session/
+
+# 忽略Docker相关临时文件
+Dockerfile.*
+.dockerignore
+
+# 忽略Lua插件编译产物
+*.luac
