@@ -565,6 +565,74 @@ func validateCustomEngineCommand(cmdText string) error {
 	return nil
 }
 
+// 从命令文本中提取 --chat-template-file 后面的文件路径
+func extractTemplateFile(cmdText string) string {
+	cmd := normalizeSpaces(cmdText)
+
+	// 查找 --chat-template-file
+	idx := strings.Index(cmd, "--chat-template-file")
+	if idx == -1 {
+		return ""
+	}
+
+	// 找到 --chat-template-file 后的内容
+	rest := cmd[idx+len("--chat-template-file"):]
+	// 跳过空格
+	rest = strings.TrimLeft(rest, " ")
+
+	// 提取路径
+	if strings.HasPrefix(rest, "\"") {
+		// 带双引号
+		rest = rest[1:]
+		endIdx := strings.Index(rest, "\"")
+		if endIdx != -1 {
+			return rest[:endIdx]
+		}
+	} else if strings.HasPrefix(rest, "'") {
+		// 带单引号
+		rest = rest[1:]
+		endIdx := strings.Index(rest, "'")
+		if endIdx != -1 {
+			return rest[:endIdx]
+		}
+	} else {
+		// 不带引号，取到下一个空格或结尾
+		endIdx := strings.Index(rest, " ")
+		if endIdx != -1 {
+			return rest[:endIdx]
+		}
+		return rest
+	}
+
+	return ""
+}
+
+// 校验模板文件是否存在
+func validateTemplateFile(cmdText string) error {
+	cmd := normalizeSpaces(cmdText)
+
+	// 查找 --chat-template-file
+	idx := strings.Index(cmd, "--chat-template-file")
+	if idx == -1 {
+		return nil
+	}
+
+	templateFile := extractTemplateFile(cmdText)
+	if templateFile == "" {
+		return nil
+	}
+
+	info, err := os.Stat(templateFile)
+	if err != nil {
+		return fmt.Errorf("模板文件不存在: %s", templateFile)
+	}
+	if info.IsDir() {
+		return fmt.Errorf("模板路径是目录而非文件: %s", templateFile)
+	}
+
+	return nil
+}
+
 // 新增：自动修正 UseCustomEngine 标志
 // 若 command 首段为有效引擎可执行文件，且 useCustomEngine 为 false 且非完全自定命令，
 // 则自动将其设为 true 并回写配置文件。
@@ -1074,16 +1142,30 @@ func startApp(config *Config) {
 			return
 		}
 
-		// 校驗每個 scheme 的引擎路徑
+		// 校驗每個 scheme 的引擎路徑和模板文件
 		schemeValid = make(map[string]bool)
 		for name, sc := range newConfig.Schemes {
 			isValid := true
+
+			// 校驗引擎路徑
 			if sc.UseCustomEngine && !sc.UseCustomCommand && sc.Command != "" {
 				if err := validateCustomEngineCommand(sc.Command); err != nil {
 					isValid = false
 					fmt.Printf("方案 %s 引擎路徑無效: %v\n", name, err)
 				}
 			}
+
+			// 校驗模板文件
+			if sc.Command != "" {
+				hasTemplate := strings.Contains(sc.Command, "--chat-template-file")
+				if hasTemplate {
+					if err := validateTemplateFile(sc.Command); err != nil {
+						isValid = false
+						fmt.Printf("方案 %s 模板文件無效: %v\n", name, err)
+					}
+				}
+			}
+
 			schemeValid[name] = isValid
 			newConfig.Schemes[name] = sc
 		}
