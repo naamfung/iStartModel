@@ -1,6 +1,6 @@
 llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
 model: C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox-Qwen3.6-35B-Uncensored-Genesis-V3-APEX-Compact-MTP.gguf
-template: C:/iStartModel/tmpl/Qwen-Agentic-EN.jinja
+template: "C:/iStartModel/tmpl/Qwen-Agentic-HONT.jinja"
 alias: Agentic-Turbo-Fast
 current: AgentWorld-Q80-128K-CODER
 schemes:
