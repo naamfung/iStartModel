@@ -113,3 +113,7 @@ Dockerfile.*
 
 # 忽略Lua插件编译产物
 *.luac
+
+# 忽略 agent 文档
+AGENTS.md
+
