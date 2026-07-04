@@ -1,13 +1,27 @@
-llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
-model: C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox-Qwen3.6-35B-Uncensored-Genesis-V3-APEX-Compact-MTP.gguf
+llamaServer: D:/Programs/llama-b9862-bin-win-cuda-13.3-x64/llama-server.exe
+model: "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf"
 template: "C:/iStartModel/tmpl/Qwen-Agentic-HONT.jinja"
-alias: Agentic-Turbo-Fast
-current: AgentWorld-Q80-128K-CODER
+alias: Agentic-Worker
+current: AgentWorld-Turbo-Q8T4-128K
 schemes:
     AgentWorld-mtp-Turbo-Q8T4-128K:
         alias: Agentic-Turbo-Coder
-        note: 30.02 t/s ~ 21.64 t/s | 混合算力：34层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
-        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 16384 -ub 2048 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        note: 30.02 t/s ~ 24.35 t/s | 混合算力：36层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-MTP-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl auto -ngld all --n-cpu-moe 36 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Turbo-T4T3-128K:
+        alias: Agentic-Turbo-Coder
+        note: 24.60 t/s | 混合算力：34层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-MTP-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl auto -ngld all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Q80-128K:
+        alias: Agentic-Turbo-Coder
+        note: 30.02 t/s ~ 22.59 t/s | 混合算力：38层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-MTP-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 38 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 16384 -ub 2048 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
@@ -41,7 +55,7 @@ schemes:
         useCustomCommand: false
     AgentWorld-Turbo-Q8T4-128K:
         alias: Agentic-Turbo-Fast
-        note: 22.47 t/s | 混合算力：33层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        note: 24.23 t/s | 混合算力：33层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
         command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
         useCustomEngine: true
         useCustomTemplate: false
@@ -55,7 +69,7 @@ schemes:
         useCustomCommand: false
     AgentWorld-Turbo-T4T3-128K:
         alias: Agentic-Turbo-Fast
-        note: 22.47 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        note: 19.35 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：turbo4 + turbo3 | 128k容量
         command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning off --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
         useCustomEngine: true
         useCustomTemplate: false
