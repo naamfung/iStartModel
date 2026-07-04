@@ -1,4 +1,4 @@
-llamaServer: D:/Programs/llama-b9870-bin-win-cuda-13.3-x64/llama-server.exe
+llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
 model: C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf
 template: C:/iStartModel/tmpl/Qwen-Agentic-HONT.jinja
 alias: Agentic-Worker
@@ -66,13 +66,6 @@ schemes:
         command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-MTP-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl auto -ngld all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
         useCustomEngine: true
         useCustomTemplate: false
-        useCustomCommand: false
-    Gemma-4-12B-coder-fable5-composer2.5-v2-Q80-128K:
-        alias: Agentic-Q80-Fast
-        note: 32.40 t/s | 128k
-        command: -m "D:/models2/Gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2/gemma4-v2-Q3_K_M.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/ManniX-ITA-Gemma-4-A4B-98e-v7-coder-it-GGUF-chat_template.fixed.jinja"
-        useCustomEngine: false
-        useCustomTemplate: true
         useCustomCommand: false
     Gemma-4-26B-A4B-it-QAT-Unsloth-Q80-128K:
         alias: Agentic-Gemma-Turbo

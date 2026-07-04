@@ -633,6 +633,50 @@ func validateTemplateFile(cmdText string) error {
 	return nil
 }
 
+// 从命令文本中提取 -m 或 --model 后面的文件路径
+func extractModelFile(cmdText string) string {
+	cmd := normalizeSpaces(cmdText)
+	parts := strings.Fields(cmd)
+	for i, part := range parts {
+		if part == "-m" || part == "--model" {
+			if i+1 < len(parts) {
+				return parts[i+1]
+			}
+			return ""
+		}
+	}
+	return ""
+}
+
+// 校验模型文件是否存在
+func validateModelFile(cmdText string) error {
+	modelFile := extractModelFile(cmdText)
+	if modelFile == "" {
+		return nil
+	}
+
+	// 去除可能的引號
+	if strings.HasPrefix(modelFile, "\"") && strings.HasSuffix(modelFile, "\"") {
+		modelFile = modelFile[1 : len(modelFile)-1]
+	} else if strings.HasPrefix(modelFile, "'") && strings.HasSuffix(modelFile, "'") {
+		modelFile = modelFile[1 : len(modelFile)-1]
+	}
+
+	if modelFile == "" {
+		return nil
+	}
+
+	info, err := os.Stat(modelFile)
+	if err != nil {
+		return fmt.Errorf("模型文件不存在: %s", modelFile)
+	}
+	if info.IsDir() {
+		return fmt.Errorf("模型路径是目录而非文件: %s", modelFile)
+	}
+
+	return nil
+}
+
 // 新增：自动修正 UseCustomEngine 标志
 // 若 command 首段为有效引擎可执行文件，且 useCustomEngine 为 false 且非完全自定命令，
 // 则自动将其设为 true 并回写配置文件。
@@ -1142,7 +1186,7 @@ func startApp(config *Config) {
 			return
 		}
 
-		// 校驗每個 scheme 的引擎路徑和模板文件
+		// 校驗每個 scheme 的引擎路徑、模板文件和模型文件
 		schemeValid = make(map[string]bool)
 		for name, sc := range newConfig.Schemes {
 			isValid := true
@@ -1163,6 +1207,14 @@ func startApp(config *Config) {
 						isValid = false
 						fmt.Printf("方案 %s 模板文件無效: %v\n", name, err)
 					}
+				}
+			}
+
+			// 校驗模型文件
+			if sc.Command != "" {
+				if err := validateModelFile(sc.Command); err != nil {
+					isValid = false
+					fmt.Printf("方案 %s 模型文件無效: %v\n", name, err)
 				}
 			}
 
