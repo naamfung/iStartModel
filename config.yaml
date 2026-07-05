@@ -1,23 +1,9 @@
 llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
-model: "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf"
-template: "C:/iStartModel/tmpl/fixed_for_froggeric-v21.3-HONT.jinja"
+model: C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf
+template: C:/iStartModel/tmpl/fixed_for_froggeric-v21.3-HONT.jinja
 alias: Agentic-Worker
 current: AgentWorld-Q80-128K-CODER
 schemes:
-    AgentWorld-PreserveThinking-Q80-256K:
-        alias: Agentic-Turbo-Coder
-        note: 23.17 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 256k容量
-        command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --chat-template-kwargs ''{"preserve_thinking": true}'' --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja'
-        useCustomEngine: false
-        useCustomTemplate: false
-        useCustomCommand: false
-    AgentWorld-Q80-128K-CODER:
-        alias: Agentic-Turbo-Coder
-        note: 23.17 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
-        command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
-        useCustomEngine: false
-        useCustomTemplate: false
-        useCustomCommand: false
     AgentWorld-APEX-I-MINI-Q80-128K:
         alias: Agentic-Turbo-Coder
         note: 填充：短文，47.03 t/s 长文，855.17 t/s；生成：33.98 t/s | 混合算力：26层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
@@ -39,10 +25,10 @@ schemes:
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
-    AgentWorld-Q80-256K:
+    AgentWorld-Q80-128K-CODER:
         alias: Agentic-Turbo-Coder
-        note: 23.17 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 256k容量
-        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        note: 23.17 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
         useCustomEngine: false
         useCustomTemplate: false
         useCustomCommand: false
@@ -179,20 +165,6 @@ schemes:
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
-    MainScheme-PreserveThinkingPlus-X-Turbo-Q8T4-128K:
-        alias: Agentic-Turbo-Fast
-        note: 33.32 t/s | 混合算力：32层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
-        useCustomEngine: true
-        useCustomTemplate: false
-        useCustomCommand: false
-    MainScheme-PreserveThinkingPlus-NCM36-Turbo-Q8T4-256K:
-        alias: Agentic-Turbo-Fast
-        note: 33.32 t/s | 混合算力：36层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 256k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 36 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
-        useCustomEngine: true
-        useCustomTemplate: false
-        useCustomCommand: false
     MainScheme-PreserveThinkingPlus-Turbo-Q8T3-128K:
         alias: Agentic-Turbo-Fast
         note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo3 | 128k容量
@@ -207,27 +179,6 @@ schemes:
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
-    MainScheme-PreserveThinkingPlus-Turbo-Q8T3-256K:
-        alias: Agentic-Turbo-Fast
-        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo3 | 256k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
-        useCustomEngine: true
-        useCustomTemplate: false
-        useCustomCommand: false
-    MainScheme-PreserveThinkingPlus-Turbo-Q8T4-192K:
-        alias: Agentic-Turbo-Fast
-        note: 35.60 t/s ~ 37.72 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 192k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 196608 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
-        useCustomEngine: true
-        useCustomTemplate: false
-        useCustomCommand: false
-    MainScheme-PreserveThinkingPlus-Turbo-Q8T4-256K:
-        alias: Agentic-Turbo-Fast
-        note: 37.72 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 256k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
-        useCustomEngine: true
-        useCustomTemplate: false
-        useCustomCommand: false
     MainScheme-PreserveThinkingPlus-Turbo-T4T3-256K:
         alias: Agentic-Turbo-Fast
         note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：turbo4 + turbo3 | 256k容量
@@ -235,17 +186,17 @@ schemes:
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
+    MainScheme-PreserveThinkingPlus-X-Turbo-Q8T4-128K:
+        alias: Agentic-Turbo-Fast
+        note: 33.32 t/s | 混合算力：32层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
     MainScheme-PreserveThinkingPlus-kQ50-vQ41-192K:
         alias: Agentic-Turbo-Fast
         note: 28.03 t/s ~ 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q5_0 + q4_1 | 192k容量
         command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 196608 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q5_0 --cache-type-v q4_1 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
-        useCustomEngine: true
-        useCustomTemplate: false
-        useCustomCommand: false
-    MainScheme-PreserveThinkingPlus-kQ50-vQ41-256K:
-        alias: Agentic-Turbo-Fast
-        note: 27.46 t/s ~ 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q5_0 + q4_1 | 256k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q5_0 --cache-type-v q4_1 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
@@ -354,33 +305,12 @@ schemes:
         useCustomEngine: true
         useCustomTemplate: true
         useCustomCommand: false
-    Qwythos-9B-Claude-Mythos-5-1M-Atomic-Turbo-256k:
-        alias: Agentic-Turbo-Fast
-        note: 67.76 t/s | 单独算力：ONLY GPU | 键值压缩：turbo4 + turbo3 | 256k容量
-        command: D:/Programs/llama-cpp-repos/atomic-llama-cpp-turboquant/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.5-9B/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF/Qwythos-9B-Claude-Mythos-5-1M-MTP-Q4_K_M.gguf" --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.05 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja --spec-type mtp
-        useCustomEngine: true
-        useCustomTemplate: true
-        useCustomCommand: false
-    Qwythos-9B-Claude-Mythos-5-1M-Q80:
-        alias: Agentic-Turbo-Fast
-        note: 60.92 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + q8_0 | 128k容量
-        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.5-9B/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF/Qwythos-9B-Claude-Mythos-5-1M-MTP-Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --no-mmap --mlock --no-mmproj -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.05 --repeat_penalty 1.05 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/meiloi-3.6_chat_template-v10.jinja" --spec-type draft-mtp --spec-draft-n-max 2
-        useCustomEngine: true
-        useCustomTemplate: true
-        useCustomCommand: false
     Qwythos-9B-Claude-Mythos-5-1M-Turbo-128k:
         alias: Agentic-Turbo-Fast
         note: 70.87 t/s | 单独算力：ONLY GPU | 键值压缩：turbo4 + turbo3 | 128k容量
         command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.5-9B/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF/Qwythos-9B-Claude-Mythos-5-1M-MTP-Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.05 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/Qwythos-Claude-Mythos.jinja" --spec-type draft-mtp --spec-draft-n-max 2
         useCustomEngine: true
         useCustomTemplate: false
-        useCustomCommand: false
-    Qwythos-9B-Claude-Mythos-5-1M-Turbo-256k:
-        alias: Agentic-Turbo-Fast
-        note: 49.20 t/s | 单独算力：ONLY GPU | 键值压缩：turbo4 + turbo3 | 256k容量
-        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.5-9B/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF/Qwythos-9B-Claude-Mythos-5-1M-MTP-Q4_K_M.gguf" --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.05 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/meiloi-3.6_chat_template-v10.jinja" --spec-type draft-mtp --spec-draft-n-max 2
-        useCustomEngine: true
-        useCustomTemplate: true
         useCustomCommand: false
     Scheme-PreserveThinking:
         alias: Agentic-Q80-Fast
