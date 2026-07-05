@@ -2,7 +2,7 @@ llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
 model: "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf"
 template: "C:/iStartModel/tmpl/fixed_for_froggeric-v21.3-HONT.jinja"
 alias: Agentic-Worker
-current: MainScheme-PreserveThinkingPlus-X-Turbo-Q8T4-128K
+current: AgentWorld-Q80-128K-CODER
 schemes:
     AgentWorld-PreserveThinking-Q80-256K:
         alias: Agentic-Turbo-Coder
@@ -18,21 +18,21 @@ schemes:
         useCustomEngine: false
         useCustomTemplate: false
         useCustomCommand: false
-    AgentWorld-APEX-I-MINI-Q80-128K-CODER:
+    AgentWorld-APEX-I-MINI-Q80-128K:
         alias: Agentic-Turbo-Coder
         note: 填充：短文，47.03 t/s 长文，855.17 t/s；生成：33.98 t/s | 混合算力：26层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
         command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 26 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 8192 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
         useCustomEngine: false
         useCustomTemplate: false
         useCustomCommand: false
-    AgentWorld-APEX-I-MINI-Turbo-Q8T4-128K-CODER:
+    AgentWorld-APEX-I-MINI-Turbo-Q8T4-128K:
         alias: Agentic-Turbo-Coder
         note: 填充：短文，43.29 t/s 长文，848.48 t/s；生成：32.19 t/s | 混合算力：26层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
         command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 26 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 4096 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false
-    AgentWorld-APEX-I-MINI-Turbo-T4T3-128K-CODER:
+    AgentWorld-APEX-I-MINI-Turbo-T4T3-128K:
         alias: Agentic-Turbo-Coder
         note: 填充：短文，39.91 t/s 长文，822.73 t/s；生成：31.09 t/s | 混合算力：26层/CPU 18核心线程 + GPU | 键值压缩：turbo4 + turbo3 | 128k容量
         command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 26 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 4096 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
