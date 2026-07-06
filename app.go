@@ -1031,6 +1031,11 @@ func startApp(config *Config) {
 				}
 			}
 
+			// 先重置背景為默認顏色，再根據校驗結果設置紅色
+			if bg, ok := stack.Objects[0].(*canvas.Rectangle); ok {
+				bg.FillColor = theme.BackgroundColor()
+				bg.Refresh()
+			}
 			// 根據校驗結果設置背景顏色
 			if v, exists := schemeValid[schemes[id]]; exists && !v {
 				if bg, ok := stack.Objects[0].(*canvas.Rectangle); ok {
