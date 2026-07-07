@@ -1,4 +1,4 @@
-llamaServer: D:/Programs/llama-b9892-bin-win-cuda-13.3-x64/llama-server.exe
+llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
 model: "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/Hermes3.6-35B-A3B-Uncensored-Genesis-MTP-APEX-Compact.gguf"
 template: "C:/iStartModel/tmpl/Qwen-Agentic-HONT.jinja"
 alias: Agentic-Worker

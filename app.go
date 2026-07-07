@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"os/signal"
+	"path/filepath"
 	"runtime"
 	"strings"
 	"sync"
@@ -1399,6 +1400,19 @@ func startApp(config *Config) {
 // ---- main ----
 
 func main() {
+	// 清空 logs 目錄下的所有日志文件
+	logDir := "logs"
+	if _, err := os.Stat(logDir); err == nil {
+		files, err := os.ReadDir(logDir)
+		if err == nil {
+			for _, f := range files {
+				if strings.HasSuffix(strings.ToLower(f.Name()), ".log") {
+					os.Remove(filepath.Join(logDir, f.Name()))
+				}
+			}
+		}
+	}
+
 	if len(os.Args) < 2 {
 		config, err := loadConfig("config.yaml")
 		if err != nil {
