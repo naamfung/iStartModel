@@ -1,8 +1,8 @@
-llamaServer: D:/Programs/llama-b9859-bin-win-cuda-13.3-x64/llama-server.exe
-model: C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf
+llamaServer: D:/Programs/llama-b9892-bin-win-cuda-13.3-x64/llama-server.exe
+model: "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/Hermes3.6-35B-A3B-Uncensored-Genesis-MTP-APEX-Compact.gguf"
 template: "C:/iStartModel/tmpl/Qwen-Agentic-HONT.jinja"
 alias: Agentic-Worker
-current: AgentWorld-35B-A3B-APEX-I-Compact-Q80-128K
+current: MainScheme-PreserveThinking-Q80-128K
 schemes:
     MerkyorLynn-Qwen3.6-35B-A3B-DSV4Pro-Distill-mtp-Q80-128K:
         alias: Agentic-Turbo-Coder
@@ -160,8 +160,8 @@ schemes:
         useCustomCommand: false
     MainScheme-PreserveThinking-Turbo-Q8T4-128K:
         alias: Agentic-Turbo-Fast
-        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
-        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        note: 35.98 t/s | 混合算力：35层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 35 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 1024 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
         useCustomEngine: true
         useCustomTemplate: false
         useCustomCommand: false

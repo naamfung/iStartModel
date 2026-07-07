@@ -16,8 +16,8 @@ LlamaServer大语言模型引擎的启动器，配置集中管理..
 
 ## 修正原版且无审查模型
 
-Qwen3.6-35B-A3B-Uncensored-Genesis 二零二六年七月二号 APEX 版：
-https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-GGUF/tree/main
+Qwen3.6-35B-A3B-Uncensored-Genesis 二零二六年七月六号 APEX 版：
+https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-GGUF/tree/main
 
 模型作者反映：原始 Qwen3.5/3.6 模型的第 0 块专家张量中存在 40% 的噪声零块，这些噪声零块仅在 Q8_0 量化下可见。三个 ssm_con1vd 张量具有巨大的大信号规模，并在整个神经网络的训练过程中累积级联误差分布。现在吹得犀兮鸠利的 Ornith ，由于亦系同样基于有缺陷的基础模型，故而当上下文窗口较大时，将触发递归生成——即死循环。
 
