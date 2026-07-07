@@ -70,7 +70,7 @@ schemes:
     AgentWorld-mtp-Q80-128K:
         alias: Agentic-Turbo-Coder
         note: 36.01 t/s | 混合算力：34层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
-        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning off --reasoning-budget 0 --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 4
+        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 4 --spec-draft-p-min 0.75
         useCustomEngine: false
         useCustomTemplate: false
         useCustomCommand: false

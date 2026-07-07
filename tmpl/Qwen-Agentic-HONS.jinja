@@ -1,4 +1,4 @@
-{%- set template_version = "Qwen-Agentic-HONS-V1" %}
+{%- set template_version = "Qwen-Agentic-HONS-v1.2" %}
 {%- set image_count = namespace(value=0) %}
 {%- set video_count = namespace(value=0) %}
 {%- set add_vision_id = add_vision_id if add_vision_id is defined else false %}
@@ -283,9 +283,9 @@ Reminder:
 {%- if add_generation_prompt %}
     {{- '<|im_start|>assistant\n' }}
     {%- if not ns_state.thinking %}
-        {{- '<think>\n</think>\n' }}
+        {{- '<think>\n\n</think>\n\n' }}
     {%- elif ns2.consecutive_failures >= 2 %}
-        {{- '<think>\n</think>\n' }}
+        {{- '<think>\n\n</think>\n\n' }}
     {%- else %}
         {{- '<think>\n思考过程：\n' }}
     {%- endif %}
