@@ -1,0 +1,265 @@
+llamaServer: D:/Programs/llama-cpp-repos/laamaafung/build-master/bin/Release/llama-server.exe
+model: C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/LuffyTheFox-Hermes3.6-35B-A3B-Uncensored-Genesis-V4-MTP-APEX-Compact.gguf
+template: D:/Programs/llama-cpp-repos/laamaafung/tmpl/Qwen-Agentic-HONT.jinja
+alias: Agentic-Worker
+current: AgentWorld-mtp-Q80-128K-CODER
+schemes:
+    AgentWorld-APEX-I-MINI-Q80-128K:
+        alias: Agentic-Turbo-Coder
+        note: 填充：短文，51.92 t/s 长文，855.17 t/s；生成：33.98 t/s | 混合算力：26层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 26 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 8192 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-Q80-128K-CODER:
+        alias: Agentic-Turbo-Coder
+        note: 填充：534.12 t/s 生成：25.05 t/s | 混合算力：32层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/Unsloth/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 1024 -ub 4096 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-Turbo-Q8T3-128K:
+        alias: Agentic-Turbo-Fast
+        note: 22.47 t/s | 混合算力：33层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Unsloth/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-Turbo-T4T3-128K:
+        alias: Agentic-Turbo-Fast
+        note: 19.35 t/s | 混合算力：34层/CPU 18核心线程 + GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "C:/WorkModels/Qwen3.6-35B-A3B/Unsloth/Qwen-AgentWorld-35B-A3B-UD-IQ4_XS.gguf" --ctx-size 131072 --flash-attn on --reasoning off --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Q80-128K-CODER:
+        alias: Agentic-Turbo-Coder
+        note: 36.01 t/s | 混合算力：34层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --context-shift --swa-full --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --checkpoint-min-step 512 --ctx-checkpoints 64 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --jinja --spec-type draft-mtp --spec-draft-n-max 4
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Turbo-Q8T4-128K:
+        alias: Agentic-Turbo-Coder
+        note: 35.25 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all -ngld all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0  --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --jinja --spec-type draft-mtp --spec-draft-n-max 4
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Turbo-T4T3-128K:
+        alias: Agentic-Turbo-Coder
+        note: 24.60 t/s | 混合算力：34层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl auto -ngld all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 16384 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    Gemma-4-26B-A4B-it-QAT-Unsloth-Q80-128K:
+        alias: Agentic-Gemma-Turbo
+        note: 128k
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe -m "K:/models6/unsloth/Gemma-4-26B-A4B-it-qat-GGUF/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/ManniX-ITA-Gemma-4-A4B-98e-v7-coder-it-GGUF-chat_template.fixed.jinja"
+        useCustomEngine: true
+        useCustomTemplate: true
+        useCustomCommand: false
+    Gemma-4-E4B-it-Coder-Q80-128K:
+        alias: Agentic-Gemma-Aggressive
+        note: 79.38 t/s~88.49 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: -m "K:/models/mradermacher/Gemma-4-E4B-it-Coder-GGUF/gemma-4-E4B-it-Coder.Q6_K.gguf" --alias Agentic-Turbo-Fast --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/ManniX-ITA-Gemma-4-A4B-98e-v7-coder-it-GGUF-chat_template.fixed.jinja"
+        useCustomEngine: false
+        useCustomTemplate: true
+        useCustomCommand: false
+    Gemma4-26B-A4B-Uncensored-Balanced-Turbo-T4T3-128K:
+        alias: Agentic-Gemma-Turbo
+        note: 128k
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe -m "K:/models6/HauhauCS/Gemma4-26B-A4B-Uncensored-HauhauCS-Balanced/Gemma4-26B-A4B-Uncensored-HauhauCS-Balanced-Q4_K_P.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-file "C:/WorkModels/Jinja-Template/ManniX-ITA-Gemma-4-A4B-98e-v7-coder-it-GGUF-chat_template.fixed.jinja"
+        useCustomEngine: true
+        useCustomTemplate: true
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Q80-128K:
+        alias: Agentic-Turbo-Fast
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: '--ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Turbo-Q8T3-128K:
+        alias: Agentic-Turbo-Fast
+        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo3 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Turbo-Q8T4-128K:
+        alias: Agentic-Turbo-Fast
+        note: 35.98 t/s | 混合算力：35层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: '--model "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/LuffyTheFox-Hermes3.6-35B-A3B-Uncensored-Genesis-V4-MTP-APEX-Compact.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 35 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 1024 -ub 256 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --seed 42 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --reasoning-temp 0.9 --reasoning-top-p 0.95 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2 --verbose'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Turbo-T4T3-128K:
+        alias: Agentic-Turbo-Fast
+        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-kQ50-vQ41-128K:
+        alias: Agentic-Turbo-Fast
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q5_0 + q4_1 | 128k容量
+        command: '--ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q5_0 --cache-type-v q4_1 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinkingPlus-CMOE-Turbo-Q8T3-128K:
+        alias: Agentic-Turbo-Fast
+        note: 27.48 t/s | 混合算力：CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo3 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --cpu-moe --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2 --spec-draft-ngl all'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinkingPlus-Turbo-Q8T3-128K:
+        alias: Agentic-Turbo-Fast
+        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo3 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 1.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinkingPlus-Turbo-Q8T3-192K:
+        alias: Agentic-Turbo-Fast
+        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + turbo3 | 192k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 196608 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinkingPlus-Turbo-T4T3-256K:
+        alias: Agentic-Turbo-Fast
+        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：turbo4 + turbo3 | 256k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinkingPlus-X-Turbo-Q8T4-128K:
+        alias: Agentic-Turbo-Fast
+        note: 33.32 t/s | 混合算力：32层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'''
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-Q80-128K:
+        alias: Agentic-Turbo-Fast
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: -m "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-kQ50-vQ41-128K:
+        alias: Agentic-Turbo-Fast
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2草稿/GPU | 键值压缩：q5_0 + q4_1 | 128k容量
+        command: -m "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q5_0 --cache-type-v q4_1 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 70.46 t/s | 单独算力：ONLY GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "K:/models/mradermacher/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED.Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --threads 12 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    Qwen3.5-9B-Uncensored-Aggressive-Q8T3-Atomic-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 67.77 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/atomic-llama-cpp-turboquant/build/bin/Release/llama-server.exe --model "K:/models/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    Qwen3.5-9B-Uncensored-Aggressive-Q8T3-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 72.25 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "K:/models/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    Qwen3.5-9B-Uncensored-Aggressive-Q8T4-Atomic-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 70.18 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: D:/Programs/llama-cpp-repos/atomic-llama-cpp-turboquant/build/bin/Release/llama-server.exe --model "K:/models/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    Qwen3.5-9B-Uncensored-Aggressive-Q8T4-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 73.30 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --model "K:/models/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf" --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    Scheme-PreserveThinking:
+        alias: Agentic-Q80-Fast
+        note: 混合算力：CPU 12线程 + GPU MTP 2草稿 | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: '--ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 42 --cpu-moe --threads 18 --threads-http 2 --parallel 1 --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 256 --chat-template-kwargs ''{"preserve_thinking": true}'' --kv-unified --cache-prompt --cache-ram 8192 --no-mmap --mlock --no-mmproj --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm4-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 线性下降：26.04 t/s | 单独算力：CPU 12线程 | 256k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 --n-cpu-moe 42 --cpu-moe --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --checkpoint-every-n-tokens 3 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm5-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 纯容量型 | GPU 仅用于存储上下文数据 | 单独算力：CPU 12线程 | 200k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 204800 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 --n-cpu-moe 42 --cpu-moe --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj --cache-ram 8192 -b 128 -ub 128 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm6-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 纯容量型 | GPU 仅用于存储上下文数据 | 单独算力：CPU 18核心线程 | 256k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 --n-cpu-moe 42 --cpu-moe --parallel 1 --threads 18 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm7-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 35.02 t/s | 混合算力：32层/CPU 18核心线程 + 8层/GPU + MTP 2草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --checkpoint-every-n-tokens 3 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm8-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 线性下降：30.74 t/s | 混合算力：32层/CPU 18核心线程 + GPU处理其余 | 256k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -ub 512 -b 8192 --cache-prompt --kv-unified --chat-template-kwargs ''{"preserve_thinking": true}'' --checkpoint-every-n-tokens 3 --ctx-checkpoints 64 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm9-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 单独算力：ONLY GPU | 256k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj --no-context-shift -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm10-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 单独算力：ONLY GPU | 200k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 204800 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj --no-context-shift -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm11-Turbo:
+        alias: Agentic-Turbo-Fast
+        note: 单独算力：ONLY GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm12:
+        alias: Agentic-Q80-Fast
+        note: 33.07 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "...enough. Need to give the final output now!" --reasoning-format deepseek --fit 1 -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
