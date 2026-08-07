@@ -1,0 +1,181 @@
+llamaServer: D:/Programs/llama-cpp-repos/laamaafung-build-v12/bin/Release/llama-server.exe
+model: "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/Hermes3.6-35B-A3B-Uncensored-Genesis-V7-MTP-APEX-Compact.gguf"
+template: D:/Programs/llama-cpp-repos/laamaafung/tmpl/Qwen-Agentic-HONT.jinja
+alias: Agentic-Worker
+current: AgentWorld-mtp-Turbo-T4T3-128K
+schemes:
+    AgentWorld-APEX-I-MINI-Q80-128K:
+        alias: Agentic-Turbo-Coder
+        note: 填充：短文，51.92 t/s 长文，855.17 t/s；生成：33.98 t/s | 混合算力：26层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理足矣，现在回答。" --reasoning-format deepseek --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-repeat-penalty 1.1 --reasoning-repeat-last-n 256 --fit on -ngl all --n-cpu-moe 26 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 8192 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-APEX-I-MINI-F16-128K:
+        alias: Agentic-Turbo-Coder
+        note: 填充：短文，51.92 t/s 长文，855.17 t/s；生成：33.98 t/s | 混合算力：32层/CPU 18核心线程 + GPU | 键值压缩：f16 + f16 | 128k容量
+        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理足矣，现在回答。" --reasoning-format deepseek --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-repeat-penalty 1.1 --reasoning-repeat-last-n 256 --fit on -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k f16 --cache-type-v f16 --host 0.0.0.0 --port 8008 --batch-size auto --ubatch-size auto --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Q80-128K-CODER:
+        alias: Agentic-Turbo-Coder
+        note: 36.01 t/s | 混合算力：34层/CPU 18核心线程 + MTP 4步草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-repeat-penalty 1.1 --reasoning-repeat-last-n 256 --fit on -ngl all --n-cpu-moe 34 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 --batch-size 16384 --ubatch-size 256 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --checkpoint-min-step 512 --ctx-checkpoints 64 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 4 --cycle-detect-last-n 64 --cycle-detect-min-period 2 --cycle-detect-max-period 8 --cycle-detect-action boost --cycle-boost-factor 0.5 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-F16-128K-CODER:
+        alias: Agentic-Turbo-Coder
+        note: 36.01 t/s | 混合算力：34层/CPU 10核心线程 + MTP 2步草稿/GPU | 键值压缩：f16 + f16 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-repeat-penalty 1.1 --reasoning-repeat-last-n 256 --fit on -ngl all --n-cpu-moe 34 --threads 10 --threads-http 2 --parallel 1 --kv-unified --cache-type-k f16 --cache-type-v f16 --host 0.0.0.0 --port 8008 --batch-size auto --ubatch-size auto --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --checkpoint-min-step 512 --ctx-checkpoints 64 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2 --cycle-detect-last-n 64 --cycle-detect-min-period 2 --cycle-detect-max-period 8 --cycle-detect-action boost --cycle-boost-factor 0.5 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Turbo-Q8T4-128K:
+        alias: Agentic-Turbo-Coder
+        note: 35.25 t/s | 混合算力：33层/CPU 18核心线程 + MTP 4步草稿/GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --fit on -ngl all -ngld all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 --batch-size 16384 --ubatch-size 256 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0  --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --jinja --spec-type draft-mtp --spec-draft-n-max 4 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Turbo-T4T3-128K:
+        alias: Agentic-Turbo-Coder
+        note: 35.25 t/s | 混合算力：32层/CPU 10核心线程 + MTP 2步草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --fit on -ngl all -ngld all --n-cpu-moe 32 --threads 10 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --batch-size 8192 --ubatch-size 256 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0  --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --jinja --spec-type draft-mtp,ngram-mod --spec-draft-n-max 2 --spec-draft-n-min 0 --spec-ngram-mod-n-match 24 --spec-ngram-mod-n-min 24 --spec-ngram-mod-n-max 86 --cache-reuse 256 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    AgentWorld-mtp-Turbo-T4T2-128K:
+        alias: Agentic-Turbo-Coder
+        note: 35.25 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2步草稿/GPU | 键值压缩：turbo4 + turbo2 | 128k容量
+        command: --model "D:/models/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Compact-MTP.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --fit on -ngl all -ngld all --n-cpu-moe 33 --threads 10 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo2 --host 0.0.0.0 --port 8008 --batch-size auto --ubatch-size auto --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0  --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --jinja --spec-type draft-mtp --spec-draft-n-max 2 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    KAT-Coder-V2.5-Dev:
+        alias: Agentic-Turbo-Coder
+        note: 36.01 t/s | 混合算力：30层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/KAT-Coder-V2.5-Dev-APEX-I-Compact.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 30 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 16384 -ub 512 --no-mmap --mlock --no-mmproj --prompt-truncate --cache-prompt --cache-ram 8192 --checkpoint-min-step 512 --ctx-checkpoints 64 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --jinja
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Q80-128K:
+        alias: Agentic-Turbo-Flash
+        note: 36.95-43.58 t/s | 混合算力：31层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 0.9 --reasoning-top-p 0.95 --fit on -ngl all --n-cpu-moe 31 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --cycle-detect-last-n 64 --cycle-detect-min-period 2 --cycle-detect-max-period 8 --cycle-detect-action boost --cycle-boost-factor 0.5 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Turbo-Q8T4-128K:
+        alias: Agentic-Turbo-Flash
+        note: 35.98 t/s | 混合算力：32层/CPU 18核心线程 + GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: --model "C:/WorkModels/Qwen3.6-35B-A3B/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-APEX-Compact.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 0.9 --reasoning-top-p 0.95 --fit on -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 --batch-size auto --ubatch-size auto --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --prompt-truncate --cache-prompt --cache-ram 8192 --seed 42 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --cycle-detect-last-n 64 --cycle-detect-min-period 2 --cycle-detect-max-period 8 --cycle-detect-action boost --cycle-boost-factor 0.5 --verbose
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-Turbo-T4T3-128K:
+        alias: Agentic-Turbo-Flash
+        note: 35.98 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2步草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: '--ctx-size 131072 --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 0.9 --reasoning-top-p 0.95 --fit on -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-PreserveThinking-kQ50-vQ41-128K:
+        alias: Agentic-Turbo-Flash
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2步草稿/GPU | 键值压缩：q5_0 + q4_1 | 128k容量
+        command: '--ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q5_0 --cache-type-v q4_1 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --no-mmap --mlock --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --chat-template-kwargs ''{"preserve_thinking": true}'' --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-Q80-128K:
+        alias: Agentic-Turbo-Flash
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2步草稿/GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: -m "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    MainScheme-kQ50-vQ41-128K:
+        alias: Agentic-Turbo-Flash
+        note: 36.95-43.58 t/s | 混合算力：33层/CPU 18核心线程 + MTP 2步草稿/GPU | 键值压缩：q5_0 + q4_1 | 128k容量
+        command: -m "C:/WorkModels/Qwen3.6-35B-A3B/Mudler/Qwen-AgentWorld-35B-A3B-APEX-I-Mini.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 33 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q5_0 --cache-type-v q4_1 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    Scheme-PreserveThinking:
+        alias: Agentic-Q80-Fast
+        note: 混合算力：CPU 12线程 + GPU MTP 2步草稿 | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: '--ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-preserve --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 0.9 --reasoning-top-p 0.95 --fit on -ngl all --n-cpu-moe 42 --cpu-moe --threads 18 --threads-http 2 --parallel 1 --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 --batch-size auto --ubatch-size auto --kv-unified --cache-prompt --cache-ram 8192 --load-mode mlock-ram --no-mmproj --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2'
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm4-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 线性下降：26.04 t/s | 单独算力：CPU 12线程 | 256k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on --n-cpu-moe 42 --cpu-moe --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --checkpoint-every-n-tokens 3 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm5-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 纯容量型 | GPU 仅用于存储上下文数据 | 单独算力：CPU 12线程 | 200k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 204800 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on --n-cpu-moe 42 --cpu-moe --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj --cache-ram 8192 -b 128 -ub 128 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm6-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 纯容量型 | GPU 仅用于存储上下文数据 | 单独算力：CPU 18核心线程 | 256k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on --n-cpu-moe 42 --cpu-moe --parallel 1 --threads 18 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm7-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 35.02 t/s | 混合算力：32层/CPU 18核心线程 + 8层/GPU + MTP 2步草稿/GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -b 8192 -ub 1024 --checkpoint-every-n-tokens 3 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja --spec-type draft-mtp --spec-draft-n-max 2
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm8-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 线性下降：30.74 t/s | 混合算力：32层/CPU 18核心线程 + GPU处理其余 | 256k容量
+        command: 'D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 32 --threads 18 --threads-http 2 --parallel 1 --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 -ub 512 -b 8192 --cache-prompt --kv-unified --chat-template-kwargs ''{"preserve_thinking": true}'' --checkpoint-every-n-tokens 3 --ctx-checkpoints 64 --no-mmap --mlock --no-mmproj --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja'
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm9-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 单独算力：ONLY GPU | 256k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 262144 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj --no-context-shift -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm10-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 单独算力：ONLY GPU | 200k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 204800 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 0 --parallel 1 --threads 12 --threads-http 2 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --no-mmap --mlock --no-mmproj --no-context-shift -b 256 -ub 256 --cache-ram 8192 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --host 0.0.0.0 --port 8008 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm11-Turbo:
+        alias: Agentic-Turbo-Flash
+        note: 单独算力：ONLY GPU | 键值压缩：turbo4 + turbo3 | 128k容量
+        command: D:/Programs/llama-cpp-repos/llama-turbo/build/bin/Release/llama-server.exe --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k turbo4 --cache-type-v turbo3 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: true
+        useCustomTemplate: false
+        useCustomCommand: false
+    scm12:
+        alias: Agentic-Q80-Fast
+        note: 33.07 t/s | 单独算力：ONLY GPU | 键值压缩：q8_0 + q8_0 | 128k容量
+        command: --ctx-size 131072 --no-warmup --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "... Okay. Let me answer." --reasoning-format deepseek --fit on -ngl all --n-cpu-moe 0 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v q8_0 --host 0.0.0.0 --port 8008 --threads-http 2 --no-mmap --mlock --no-mmproj --cache-ram 8192 --threads 12 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
+    Qwen3.5-9B-Uncensored-Aggressive:
+        alias: Agentic-Turbo-Coder
+        note: 72.38 t/s | 独立算力： GPU | 键值压缩：q8_0 + turbo4 | 128k容量
+        command: --model "K:/models9/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf" --ctx-size 131072 --flash-attn on --reasoning on --reasoning-budget 8192 --reasoning-budget-message "…… 很好，推理经已足矣，现在等我回答。" --reasoning-format deepseek --reasoning-temp 1.0 --reasoning-top-p 0.95 --reasoning-presence-penalty 1.07 --fit on -ngl all -ngld all --n-cpu-moe 0 --threads 18 --threads-http 2 --parallel 1 --kv-unified --cache-type-k q8_0 --cache-type-v turbo4 --host 0.0.0.0 --port 8008 --batch-size 16384 --ubatch-size 256 --ctx-checkpoints 42 --load-mode mlock-ram --no-mmproj --cache-prompt --cache-ram 8192 --temp 0.6 --top-p 0.85 --top-k 20 --min-p 0.0 --repeat_penalty 1.0 --presence_penalty 0.0 --jinja
+        useCustomEngine: false
+        useCustomTemplate: false
+        useCustomCommand: false
